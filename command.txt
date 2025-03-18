@@ -1,0 +1,22 @@
+Run docker without sudo: sudo chmod 666 /var/run/docker.sock
+
+Run command to build Docker environment: docker build -t midstmodels .
+Run the container: docker run -p 8888:8888 -it midstmodels
+Enter the Docker terminal: docker exec -it 54fa54c2267c /bin/bash
+
+Delete current container and build new one with the latest version of files: 
+docker ps  # List running containers
+docker stop <CONTAINER_ID>  # Stop the running container
+docker rm <CONTAINER_ID>  # Remove the container
+
+Run the program: poetry run python attack_pipeline.py
+
+Transfer the file into the docker: docker cp attack_pipeline.py 54fa54c2267c:/app
+
+Check if the file already exist: docker exec -it 54fa54c2267c ls -l feature_distribution.png
+
+take it out: docker cp 54fa54c2267c:/app/white_box_multi_table_submission.zip .
+
+Build a new environment: python3 -m venv venv
+Enter the new environment: source venv/bin/activate
+Quit the environment: deactivate
